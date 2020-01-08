@@ -4,6 +4,9 @@ library(data.table)
 #install.packages('bit64')
 library(bit64)
 
+# install.packages('ggplot2')
+library(ggplot2)
+
 ###########################################################.
 # Read in 2018 data
 # shortcut file path:
@@ -46,7 +49,7 @@ nrow(per18[per18$disability == 1,])/nrow(per18)
 
 # 2010 N with disabilities
 nrow(per10[per10$DISABLE == 1,])
-# 820 ppl with disabilities in 2018
+# 820 ppl with disabilities in 2010
 nrow(per10)
 # of 21299 people in total
 
@@ -82,6 +85,22 @@ mean(per10$PerTrips[per10$DISABLE == 2], na.rm = T)
 # compared to 3.8 per person w/o disabilities
 ###########################################################.
 
+###########################################################.
+# Average age
+# 2010
+mean(per10$age4, na.rm = T)
+# 46
+mean(per10$age4[per10$DISABLE == 1], na.rm = T)
+# 60
+
+ggplot(per10[per10$DISABLE %in% c('1', '2'),], aes(x = age4, fill = as.factor(DISABLE)))+
+  geom_density(alpha = 0.5)+
+  scale_fill_manual(values = c('pink', 'blue'))+
+  theme_cowplot()
+
+###########################################################.
+
+
 
 ###########################################################.
 # WHAT KINDS OF DISABILITY?
@@ -98,5 +117,15 @@ mean(per10$PerTrips[per10$DISABLE == 2], na.rm = T)
 # 98=Don't know (Ashley coded as NA)
 # 99=Refused (Ashley coded as NA)
 
+summary(as.factor(per10$TYPDISABLE[per10$DISABLE ==1]))
+# 1    2    3    4    5 NA's 
+#   60    7  341  147  250   20 
+# Eye/vision: 60 ppl
+# Hearing: 7 ppl
+# Walking: 341 ppl
+# General health: 147 ppl
+# Other: 250 ppl
+# (plus 20 NA's)
+###########################################################.
 
 
