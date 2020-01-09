@@ -27,7 +27,7 @@ file_path_2018<-'C:/Users/AsmusAL/Metropolitan Council/Ehrlich, Jonathan - TBI_U
 
 # Read in 2010 data
 # shortcut filepath:
-file_path_2010<-'C:/Users/AsmusAL/OneDrive - Metropolitan Council/TBI-HouseHoldSurvey-2018/TBI-2010/'
+file_path_2010<-'C:/Users/AsmusAL/OneDrive - Metropolitan Council/TBI-HouseHoldSurvey-2018/TBI-2010-data/'
 # each csv:
 # hh10<-fread(paste0(file_path_2010, '/2010-TBI-household.csv'))
 per10<-fread(paste0(file_path_2010, '/2010-TBI-person.csv'),
